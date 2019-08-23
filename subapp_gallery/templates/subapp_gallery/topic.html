@@ -1,0 +1,23 @@
+{% extends "subapp_gallery/base.html"%}
+{% load static %}
+{% block content %}
+
+        <div class="test container topicContent ">
+            {% if images %}
+                 <div class="container">
+                    {% for list_of_image in list_of_images %}
+                        <div class="row">
+                          {% for image in list_of_image %}
+                            <div class="col" id="{{image.id}}">
+                              <a href="/subapp_gallery/{{topic.name}}/{{image.id}}"><img height="200px" width="200px" class="img-thumbnail" src="{% static image.get_source %}"></a>
+                            </div>
+                          {% endfor %}
+                      </div>
+                    {% endfor %}
+                 </div>
+            {% else %}
+                <p>No images yet.</p>
+            {% endif %}
+        </div>
+
+{% endblock content %}

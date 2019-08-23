@@ -1,0 +1,27 @@
+{% extends "subapp_gallery/base.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container frm1">
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottem mb-4"><h1>| Join Today |</h1></legend>
+				{{ form|crispy }}
+			</fieldset>
+
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Sign Up</button>
+			</div>
+
+		</form>
+		<div class="border-top pt-3">
+			<h3 class="text-muted">
+				Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+
+			</h3>
+		</div>
+	</div>
+</div>
+{% endblock content %}

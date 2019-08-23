@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% if title %}
+      <title> 
+         RAIS - {{title}}
+      </title>
+    {% else %}
+      <title> RAIS </title>
+    {% endif %}
+
+    <link href="{% static 'shop/img/favicon.ico'%}" type="image" rel="icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'shop/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'shop/vendor/bootstrap/css/bootstrap-social.css'%}" rel="stylesheet">
+
+<!--     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="vendor/bootstrap/css/bootstrap-social.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'shop/css/shop-homepage.css'%}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{%  url 'shop-home' %}">
+          <img src="{% static 'shop/img/logo.png'%}" style="width:200px;height:35px;" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'shop-home' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'shop-contact' %}">Contact Us</a>
+              </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+     <!-- Page Content -->
+
+     <!-- new user created flash message -->
+     {% if messages %}
+      {% for message in messages %}
+        <div class ="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="container">
+
+      <div class="test row ">
+
+        <div class="col-lg-3">
+          <aside>
+          <ul>
+          <li><span><a class="aside">LATEST</a></span><span></span></li>
+          <li><span><a class="aside" href="{% url 'shop-pricing' %}">PRICING</a></span><span></span></li>
+          <li><span><a class="aside">PORTOFOLIO</a></span><span></span></li>
+          <li><span><a class="aside" href="{% url 'shop-about' %}">ABOUT US</a></span><span></span></li>
+          </ul>
+          </aside>
+
+
+        </div>
+
+        <!-- /.col-lg-3 -->
+
+
+    
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; RAIS 2018
+          
+        </p>
+      </div>
+        
+    
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'shop/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'shop/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+<!--     <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ -->  </div>
+    </div>
+    
+  </body>
+
+</html>
